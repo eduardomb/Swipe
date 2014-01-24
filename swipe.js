@@ -33,6 +33,8 @@ function Swipe(container, options) {
   var index = parseInt(options.startSlide, 10) || 0;
   var speed = options.speed || 300;
   options.continuous = options.continuous !== undefined ? options.continuous : true;
+  options.exceptions = options.exceptions !== undefined ? options.exceptions : [];
+
 
   function setup() {
 
@@ -239,6 +241,9 @@ function Swipe(container, options) {
   var events = {
 
     handleEvent: function(event) {
+      if(options.exceptions.indexOf(event.target) != -1) {
+        return;
+      }
 
       switch (event.type) {
         case 'touchstart': this.start(event); break;
