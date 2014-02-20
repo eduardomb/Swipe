@@ -321,7 +321,9 @@ function Swipe(container, options) {
 
           translate(circle(index-1), delta.x + slidePos[circle(index-1)], 0);
           translate(index, delta.x + slidePos[index], 0);
-          translate(circle(index+1), delta.x + slidePos[circle(index+1)], 0);
+          if (slides[index].getAttribute('data-preview-next') != 'false') {
+            translate(circle(index+1), delta.x + slidePos[circle(index+1)], 0);
+          }
 
         } else {
 
@@ -337,7 +339,10 @@ function Swipe(container, options) {
           // translate 1:1
           translate(index-1, delta.x + slidePos[index-1], 0);
           translate(index, delta.x + slidePos[index], 0);
-          translate(index+1, delta.x + slidePos[index+1], 0);
+
+          if (slides[index].getAttribute('data-preview-next') != 'false') {
+            translate(index+1, delta.x + slidePos[index+1], 0);
+          }
         }
 
       }
